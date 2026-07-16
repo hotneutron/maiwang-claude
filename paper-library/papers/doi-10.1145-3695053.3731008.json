@@ -1,0 +1,22 @@
+{
+  "paper_id": "doi:10.1145/3695053.3731008",
+  "identity": {
+    "title": "H2-LLM: Hardware-Dataflow Co-Exploration for Heterogeneous Hybrid-Bonding-based Low-Batch LLM Inference",
+    "authors": ["Cong Li", "Yihan Yin", "Xintong Wu", "Jingchen Zhu", "Zhutianya Gao", "Dimin Niu", "Qiang Wu", "Xin Si", "Yuan Xie", "Chen Zhang", "Guangyu Sun"],
+    "year": 2025,
+    "venue": "ISCA 2025",
+    "external_ids": {"doi": "10.1145/3695053.3731008", "url": "https://dl.acm.org/doi/10.1145/3695053.3731008"}
+  },
+  "source": {
+    "abstract": "Low-batch large language model (LLM) inference has been extensively applied to edge-side generative tasks, such as personal chat helper, virtual assistant, reception bot, private edge server, etc. To efficiently handle both prefill and decoding stages in LLM inference, near-memory processing (NMP) enabled heterogeneous computation paradigm has been proposed. However, existing NMP designs typically embed processing engines into DRAM dies, resulting in limited computation capacity, which in turn restricts their ability to accelerate edge-side low-batch LLM inference. To tackle this problem, we propose H2-LLM, a Hybrid-bonding-based Heterogeneous accelerator for edge-side low-batch LLM inference. To balance the trade-off between computation capacity and bandwidth intrinsic to hybrid-bonding technology, we propose H2-LLM's architecture and extract its architecture design space. We further propose a data-centric dataflow abstraction to fully exploit the heterogeneous architecture's acceleration opportunities in low-batch LLM inference. Based on the whole design space, we propose a design space exploration (DSE) framework to automatically find out the optimal design. Compared with existing in-die NMP-based heterogeneous accelerators, H2-LLM achieves 2.72x geomean speedup and 1.48x geomean better energy efficiency. H2-LLM's data-centric dataflow exploration framework is open-sourced at https://github.com/leesou/H2-LLM-ISCA-2025.",
+    "imported_at": "2026-07-16",
+    "import_method": "abstract"
+  },
+  "passages": [
+    {"passage_id": "p1", "text": "To efficiently handle both prefill and decoding stages in LLM inference, near-memory processing (NMP) enabled heterogeneous computation paradigm has been proposed.", "locator": "abstract"},
+    {"passage_id": "p2", "text": "However, existing NMP designs typically embed processing engines into DRAM dies, resulting in limited computation capacity, which in turn restricts their ability to accelerate edge-side low-batch LLM inference.", "locator": "abstract"},
+    {"passage_id": "p3", "text": "To balance the trade-off between computation capacity and bandwidth intrinsic to hybrid-bonding technology, we propose H2-LLM's architecture and extract its architecture design space.", "locator": "abstract"},
+    {"passage_id": "p4", "text": "We further propose a data-centric dataflow abstraction to fully exploit the heterogeneous architecture's acceleration opportunities in low-batch LLM inference.", "locator": "abstract"},
+    {"passage_id": "p5", "text": "Compared with existing in-die NMP-based heterogeneous accelerators, H2-LLM achieves 2.72x geomean speedup and 1.48x geomean better energy efficiency.", "locator": "abstract"}
+  ]
+}

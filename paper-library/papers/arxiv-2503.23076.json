@@ -1,0 +1,22 @@
+{
+  "paper_id": "arxiv:2503.23076",
+  "identity": {
+    "title": "Concorde: Fast and Accurate CPU Performance Modeling with Compositional Analytical-ML Fusion",
+    "authors": ["Arash Nasr-Esfahany", "Mohammad Alizadeh", "Victor Lee", "Hanna Alam", "Brett W. Coon", "David Culler", "Vidushi Dadu", "Martin Dixon", "Henry M. Levy", "Santosh Pandey", "Parthasarathy Ranganathan", "Amir Yazdanbakhsh"],
+    "year": 2025,
+    "venue": "ISCA 2025",
+    "external_ids": {"arxiv": "2503.23076", "url": "https://arxiv.org/abs/2503.23076"}
+  },
+  "source": {
+    "abstract": "Cycle-level simulators such as gem5 are widely used in microarchitecture design, but they are prohibitively slow for large-scale design space explorations. We present Concorde, a new methodology for learning fast and accurate performance models of microarchitectures. Unlike existing simulators and learning approaches that emulate each instruction, Concorde predicts the behavior of a program based on compact performance distributions that capture the impact of different microarchitectural components. It derives these performance distributions using simple analytical models that estimate bounds on performance induced by each microarchitectural component, providing a simple yet rich representation of a program's performance characteristics across a large space of microarchitectural parameters. Experiments show that Concorde is more than five orders of magnitude faster than a reference cycle-level simulator, with about 2% average Cycles-Per-Instruction (CPI) prediction error across a range of SPEC, open-source, and proprietary benchmarks. This enables rapid design-space exploration and performance sensitivity analyses that are currently infeasible, e.g., in about an hour, we conducted a first-of-its-kind fine-grained performance attribution to different microarchitectural components across a diverse set of programs, requiring nearly 150 million CPI evaluations.",
+    "imported_at": "2026-07-16",
+    "import_method": "abstract"
+  },
+  "passages": [
+    {"passage_id": "p1", "text": "Cycle-level simulators such as gem5 are widely used in microarchitecture design, but they are prohibitively slow for large-scale design space explorations.", "locator": "abstract"},
+    {"passage_id": "p2", "text": "Unlike existing simulators and learning approaches that emulate each instruction, Concorde predicts the behavior of a program based on compact performance distributions that capture the impact of different microarchitectural components.", "locator": "abstract"},
+    {"passage_id": "p3", "text": "It derives these performance distributions using simple analytical models that estimate bounds on performance induced by each microarchitectural component.", "locator": "abstract"},
+    {"passage_id": "p4", "text": "Experiments show that Concorde is more than five orders of magnitude faster than a reference cycle-level simulator, with about 2% average Cycles-Per-Instruction (CPI) prediction error across a range of SPEC, open-source, and proprietary benchmarks.", "locator": "abstract"},
+    {"passage_id": "p5", "text": "In about an hour, we conducted a first-of-its-kind fine-grained performance attribution to different microarchitectural components across a diverse set of programs, requiring nearly 150 million CPI evaluations.", "locator": "abstract"}
+  ]
+}

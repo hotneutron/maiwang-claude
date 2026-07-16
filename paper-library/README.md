@@ -22,8 +22,12 @@ surveys / maps / reading queues are regenerable projections.
 | `schemas/paper.schema.json` | Source Layer: canonical paper identity, external ids, stable passage ids. |
 | `schemas/edges.schema.json` | Semantic Layer: claims (multi-evidence), typed edges (lifecycle+provenance), reversible merges. |
 | `schemas/study.frontmatter.schema.json` | Personal Layer: the per-paper `study` doc frontmatter (also the reading queue). |
-| `validate.py` | Zero-dependency (stdlib) draft-07-subset validator + `--selftest`. |
+| `validate.py` | Zero-dependency (stdlib) draft-07-subset validator + `--selftest` (+ optional jsonschema cross-check). |
 | `fixtures/` | Valid + malformed instances per schema (the S1 DoD proof). |
+| `papers/` | Source-Layer paper records (S2 import): one JSON per paper, with passages. |
+| `studies/` | Personal-Layer `study` docs (S2): one per paper; claims cite passage ids. |
+| `corpus_check.py` | Consistency gate: every study claim traces to a real source passage (the S2 DoD, repeatable). |
+| `graph/` | (S3, upcoming) the brain-map claim/edge/merge state. |
 
 ## The five gaps this closes (from S0)
 
@@ -58,7 +62,7 @@ python3.12 -m venv .venv && .venv/bin/pip install jsonschema
 
 - **S0** — bounded existing-art study. ✅ done.
 - **S1** — local schemas + validator + fixtures. ✅ this directory.
-- **S2** — import 3 papers into `study` docs with stable passage ids.
+- **S2** — import 3 papers into `study` docs with stable passage ids. ✅ done (`papers/`, `studies/`, `corpus_check.py`).
 - **S3** — extract a small claim + relation set (LLM-proposed, gated).
 - **S4** — idempotency: re-extraction adds no dupes, preserves manual edits.
 - **S5** — render two views (paper map + one claim-neighborhood brain map) from one committed

@@ -1,0 +1,22 @@
+{
+  "paper_id": "arxiv:2510.05497",
+  "identity": {
+    "title": "Patterns behind Chaos: Forecasting Data Movement for Efficient Large-Scale MoE LLM Inference",
+    "authors": ["Zhongkai Yu", "Yue Guan", "Zihao Yu", "Chenyang Zhou", "Zhengding Hu", "Shuyi Pei", "Yangwook Kang", "Yufei Ding", "Po-An Tsai"],
+    "year": 2025,
+    "venue": "arXiv preprint (cs.DC)",
+    "external_ids": {"arxiv": "2510.05497", "url": "https://arxiv.org/abs/2510.05497"}
+  },
+  "source": {
+    "abstract": "Large-scale Mixture of Experts (MoE) Large Language Models (LLMs) have recently become the frontier open-weight models, achieving remarkable model capability similar to proprietary ones. But their random expert selection mechanism introduces significant data movement overhead that becomes the dominant bottleneck in multi-unit LLM serving systems. To understand the patterns underlying this data movement, we conduct comprehensive data-movement-centric profiling across four state-of-the-art large-scale MoE models released in 2025 (200B-1000B) using over 24,000 requests spanning diverse workloads. We perform systematic analysis from both temporal and spatial perspectives and distill six key insights to guide the design of diverse serving systems. We verify these insights on both future wafer-scale GPU architectures and existing GPU systems. On wafer-scale GPUs, lightweight architectural modifications guided by our insights yield a 6.6x average speedup across four 200B-1000B models. On existing GPU systems, our insights drive the design of a prefill-aware expert placement algorithm that achieves up to 1.25x speedup on MoE computation. Our work presents the first comprehensive data-centric analysis of large-scale MoE models together with a concrete design study applying the learned lessons.",
+    "imported_at": "2026-07-16",
+    "import_method": "abstract"
+  },
+  "passages": [
+    {"passage_id": "p1", "text": "But their random expert selection mechanism introduces significant data movement overhead that becomes the dominant bottleneck in multi-unit LLM serving systems.", "locator": "abstract"},
+    {"passage_id": "p2", "text": "To understand the patterns underlying this data movement, we conduct comprehensive data-movement-centric profiling across four state-of-the-art large-scale MoE models released in 2025 (200B-1000B) using over 24,000 requests spanning diverse workloads.", "locator": "abstract"},
+    {"passage_id": "p3", "text": "We perform systematic analysis from both temporal and spatial perspectives and distill six key insights to guide the design of diverse serving systems.", "locator": "abstract"},
+    {"passage_id": "p4", "text": "On wafer-scale GPUs, lightweight architectural modifications guided by our insights yield a 6.6x average speedup across four 200B-1000B models.", "locator": "abstract"},
+    {"passage_id": "p5", "text": "On existing GPU systems, our insights drive the design of a prefill-aware expert placement algorithm that achieves up to 1.25x speedup on MoE computation.", "locator": "abstract"}
+  ]
+}
