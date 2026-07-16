@@ -1,0 +1,9 @@
+[submodule "cross-team/artifact_types"]
+	path = cross-team/artifact_types
+	url = https://github.com/hotneutron/artifact_types
+[submodule "cross-team/parallax"]
+	path = cross-team/parallax
+	url = https://github.com/hotneutron/parallax
+[submodule "cross-team/warrant"]
+	path = cross-team/warrant
+	url = https://github.com/hotneutron/warrant
