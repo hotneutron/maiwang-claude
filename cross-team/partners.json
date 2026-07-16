@@ -1,12 +1,12 @@
 {
-  "_doc": "Parallax sync home — partner registry. Home discovered by walking up from cwd to this dir (or PARALLAX_HOME). Partner `path` resolves relative to this file when not absolute. last_pinned=null until the first real sync advances the ledger.",
+  "_doc": "Parallax sync home \u2014 partner registry. Home discovered by walking up from cwd to this dir (or PARALLAX_HOME). Partner `path` resolves relative to this file when not absolute. last_pinned=null until the first real sync advances the ledger.",
   "partners": {
     "gpt": {
       "path": "../../maiwang-gpt",
       "team_name": "maiwang-gpt",
       "protocol_version": "2.2",
-      "last_pinned": null,
-      "last_sync": null
+      "last_pinned": "43f6d959da144b5e4642c9fdeca3dcc2ef6acb43",
+      "last_sync": "2026-07-16"
     }
   }
 }
