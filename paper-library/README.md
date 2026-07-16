@@ -27,7 +27,14 @@ surveys / maps / reading queues are regenerable projections.
 | `papers/` | Source-Layer paper records (S2 import): one JSON per paper, with passages. |
 | `studies/` | Personal-Layer `study` docs (S2): one per paper; claims cite passage ids. |
 | `corpus_check.py` | Consistency gate: every study claim traces to a real source passage (the S2 DoD, repeatable). |
-| `graph/` | (S3, upcoming) the brain-map claim/edge/merge state. |
+| `graph/proposals.json` | S3 LLM-proposed layer: extraction + inference claims, typed edges, merges. |
+| `graph/graph.json` | S4 COMPILED graph state (built, validated, idempotent). Do not hand-edit except `owner: human`. |
+| `build_graph.py` | S4 builder: compiles proposals → graph, applies reversible merges, preserves human edits, idempotent. |
+| `test_idempotency.py` | S4 DoD: rebuild is byte-identical AND manual edits survive. |
+| `render.py` | S5 renderers: `paper-map`, `brain-map <claim>`, `survey <claim>`, `all` — each stamped with the graph SHA. |
+| `render/` | S5 projections (regenerable): `paper_map.md`, `brain_map.md`, `survey.md`. |
+| `trace_check.py` | Overall DoD gate: survey + graph view both trace to the same committed graph SHA. |
+| `260716-0039-findings-spike-decision-log.md` | S6 decision log + D4 storage-friction findings. |
 
 ## The five gaps this closes (from S0)
 
@@ -63,15 +70,26 @@ python3.12 -m venv .venv && .venv/bin/pip install jsonschema
 - **S0** — bounded existing-art study. ✅ done.
 - **S1** — local schemas + validator + fixtures. ✅ this directory.
 - **S2** — import 3 papers into `study` docs with stable passage ids. ✅ done (`papers/`, `studies/`, `corpus_check.py`).
-- **S3** — extract a small claim + relation set (LLM-proposed, gated).
-- **S4** — idempotency: re-extraction adds no dupes, preserves manual edits.
+- **S3** — extract a small claim + relation set (LLM-proposed, gated). ✅ `graph/proposals.json` (12 claims, 9 edges).
+- **S4** — idempotency: re-extraction adds no dupes, preserves manual edits. ✅ `build_graph.py` + `test_idempotency.py`.
 - **S5** — render two views (paper map + one claim-neighborhood brain map) from one committed
-  graph state.
+  graph state. ✅ `render.py` + `render/`.
 - **S6** — decision log: where each identity/merge decision was auto / LLM / manual; and any
-  git-native query awkward enough to stress storage (records D4 as a measured constraint).
+  git-native query awkward enough to stress storage (records D4 as a measured constraint). ✅ `260716-0039-findings-spike-decision-log.md`.
 
 **Overall DoD:** one regenerated survey section AND one graph view, each traceable back to the
-same committed graph state.
+same committed graph state. ✅ enforced by `trace_check.py`.
+
+## Run the full spike gate suite
+
+```
+python3 validate.py --selftest        # S1
+python3 corpus_check.py               # S2
+python3 build_graph.py                # S4 (idempotent build)
+python3 test_idempotency.py           # S4 DoD
+python3 render.py all                 # S5 projections
+python3 trace_check.py                # overall DoD
+```
 
 ## Governance
 

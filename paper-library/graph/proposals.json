@@ -1,0 +1,33 @@
+{
+  "_doc": "S3 LLM-proposed layer (the 'LLM proposes' half of the split — authored here as the extraction/inference proposals). build_graph.py compiles this + preserves human edits into graph/graph.json (the 'code disposes' half). Claims from the three study docs are extraction; cross-paper synthesis claims are inference/conjectural. Edges start `proposed`; a human/second pass flips to `confirmed`. model_version stamps provenance (adopted from gpt's plan).",
+  "model_version": "s3-manual-extract-v1",
+  "claims": [
+    {"claim_id": "C-CONCORDE-1", "statement": "Cycle-level microarchitecture simulators are prohibitively slow for large-scale design-space exploration.", "evidence": [{"paper_id": "arxiv:2503.23076", "passage_id": "p1"}], "evidence_tier": "inferred", "origin": "extraction", "confidence": 0.92},
+    {"claim_id": "C-CONCORDE-2", "statement": "Composing per-component analytical performance bounds with ML yields a compact yet rich program-performance representation.", "evidence": [{"paper_id": "arxiv:2503.23076", "passage_id": "p2"}, {"paper_id": "arxiv:2503.23076", "passage_id": "p3"}], "evidence_tier": "inferred", "origin": "extraction", "confidence": 0.9},
+    {"claim_id": "C-CONCORDE-3", "statement": "The analytical-ML surrogate is >5 orders of magnitude faster than a cycle-level simulator at ~2% average CPI error.", "evidence": [{"paper_id": "arxiv:2503.23076", "passage_id": "p4"}], "evidence_tier": "measured", "origin": "extraction", "confidence": 0.95},
+    {"claim_id": "C-MOEDM-1", "statement": "MoE random expert selection makes data movement the dominant bottleneck in multi-unit LLM serving.", "evidence": [{"paper_id": "arxiv:2510.05497", "passage_id": "p1"}], "evidence_tier": "inferred", "origin": "extraction", "confidence": 0.9},
+    {"claim_id": "C-MOEDM-2", "statement": "Temporal and spatial data-movement profiling across four 200B-1000B MoE models yields six actionable serving-design insights.", "evidence": [{"paper_id": "arxiv:2510.05497", "passage_id": "p2"}, {"paper_id": "arxiv:2510.05497", "passage_id": "p3"}], "evidence_tier": "inferred", "origin": "extraction", "confidence": 0.88},
+    {"claim_id": "C-MOEDM-3", "statement": "Insight-guided changes give 6.6x average speedup on wafer-scale GPUs and up to 1.25x on existing GPUs via prefill-aware expert placement.", "evidence": [{"paper_id": "arxiv:2510.05497", "passage_id": "p4"}, {"paper_id": "arxiv:2510.05497", "passage_id": "p5"}], "evidence_tier": "measured", "origin": "extraction", "confidence": 0.93},
+    {"claim_id": "C-H2LLM-1", "statement": "In-die NMP designs have limited compute capacity, restricting edge-side low-batch LLM acceleration.", "evidence": [{"paper_id": "doi:10.1145/3695053.3731008", "passage_id": "p2"}], "evidence_tier": "inferred", "origin": "extraction", "confidence": 0.9},
+    {"claim_id": "C-H2LLM-2", "statement": "A hybrid-bonding heterogeneous architecture plus a data-centric dataflow abstraction, searched by a DSE framework, co-explores hardware and dataflow.", "evidence": [{"paper_id": "doi:10.1145/3695053.3731008", "passage_id": "p3"}, {"paper_id": "doi:10.1145/3695053.3731008", "passage_id": "p4"}], "evidence_tier": "inferred", "origin": "extraction", "confidence": 0.88},
+    {"claim_id": "C-H2LLM-3", "statement": "H2-LLM achieves 2.72x geomean speedup and 1.48x geomean better energy efficiency vs in-die NMP heterogeneous accelerators.", "evidence": [{"paper_id": "doi:10.1145/3695053.3731008", "passage_id": "p5"}], "evidence_tier": "measured", "origin": "extraction", "confidence": 0.95},
+    {"claim_id": "C-SYNTH-1", "statement": "Design-space exploration is the shared design vehicle across CPU perf-modeling and edge-LLM accelerator work: one side makes each DSE point cheap to evaluate, the other searches a hardware/dataflow space.", "evidence": [], "evidence_tier": "conjectural", "origin": "inference", "confidence": 0.6},
+    {"claim_id": "C-SYNTH-2", "statement": "Data movement / memory bandwidth is the recurring dominant bottleneck across large-scale MoE serving and edge low-batch LLM inference.", "evidence": [], "evidence_tier": "conjectural", "origin": "inference", "confidence": 0.65},
+    {"claim_id": "C-SYNTH-3", "statement": "Cheap analytical or profiling priors reduce the cost of the downstream ML/DSE search — a cross-domain motif spanning all three papers.", "evidence": [], "evidence_tier": "conjectural", "origin": "inference", "confidence": 0.5},
+    {"claim_id": "C-SYNTH-4", "statement": "DSE is the common design tool linking Concorde and H2-LLM (one lowers per-point evaluation cost; the other explores hardware/dataflow).", "evidence": [], "evidence_tier": "conjectural", "origin": "inference", "confidence": 0.55}
+  ],
+  "edges": [
+    {"edge_id": "E-1", "from": "C-H2LLM-2", "to": "C-CONCORDE-2", "rel": "shares_assumption_with", "lifecycle": "confirmed", "origin": "inference", "evidence_tier": "conjectural", "confidence": 0.7},
+    {"edge_id": "E-2", "from": "C-CONCORDE-3", "to": "C-SYNTH-1", "rel": "supports", "lifecycle": "confirmed", "origin": "inference", "evidence_tier": "inferred", "confidence": 0.7},
+    {"edge_id": "E-3", "from": "C-H2LLM-2", "to": "C-SYNTH-1", "rel": "supports", "lifecycle": "confirmed", "origin": "inference", "evidence_tier": "inferred", "confidence": 0.72},
+    {"edge_id": "E-4", "from": "C-MOEDM-1", "to": "C-H2LLM-1", "rel": "shares_assumption_with", "lifecycle": "confirmed", "origin": "inference", "evidence_tier": "conjectural", "confidence": 0.68},
+    {"edge_id": "E-5", "from": "C-MOEDM-1", "to": "C-SYNTH-2", "rel": "supports", "lifecycle": "confirmed", "origin": "inference", "evidence_tier": "inferred", "confidence": 0.75},
+    {"edge_id": "E-6", "from": "C-H2LLM-1", "to": "C-SYNTH-2", "rel": "supports", "lifecycle": "confirmed", "origin": "inference", "evidence_tier": "inferred", "confidence": 0.7},
+    {"edge_id": "E-7", "from": "C-CONCORDE-2", "to": "C-SYNTH-3", "rel": "supports", "lifecycle": "proposed", "origin": "inference", "evidence_tier": "conjectural", "confidence": 0.55},
+    {"edge_id": "E-8", "from": "C-MOEDM-2", "to": "C-SYNTH-3", "rel": "supports", "lifecycle": "proposed", "origin": "inference", "evidence_tier": "conjectural", "confidence": 0.5},
+    {"edge_id": "E-9", "from": "C-SYNTH-4", "to": "C-SYNTH-1", "rel": "supersedes", "lifecycle": "superseded", "origin": "inference", "superseded_by": "E-2"}
+  ],
+  "merges": [
+    {"merge_id": "M-1", "canonical": "C-SYNTH-1", "merged": ["C-SYNTH-4"], "decided_by": "llm", "confidence": 0.8, "reversible": true, "decided_at": "2026-07-16"}
+  ]
+}
