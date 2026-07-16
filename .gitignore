@@ -1,0 +1,7 @@
+# Local Python virtualenv (jsonschema cross-check for paper-library/validate.py).
+# Not committed — recreate with: python3.12 -m venv .venv && .venv/bin/pip install jsonschema
+.venv/
+
+# Python bytecode / caches
+__pycache__/
+*.pyc

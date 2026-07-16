@@ -44,6 +44,16 @@ python3 validate.py --selftest                              # S1 DoD: accept val
 python3 validate.py schemas/paper.schema.json fixtures/paper.valid.json
 ```
 
+The validator is pure-stdlib and authoritative for the DoD. If the optional `jsonschema`
+library is importable, `--selftest` additionally **cross-checks** each fixture against the
+canonical implementation and asserts it agrees (`[xcheck ✓]`), guarding against draft-07
+subset-semantics drift; it degrades gracefully when the library is absent. To enable it:
+
+```
+python3.12 -m venv .venv && .venv/bin/pip install jsonschema
+.venv/bin/python validate.py --selftest                    # runs with cross-check active
+```
+
 ## Spike roadmap (converged S0–S6)
 
 - **S0** — bounded existing-art study. ✅ done.

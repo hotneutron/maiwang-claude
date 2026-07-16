@@ -110,6 +110,22 @@ def validate_file(schema_path, instance_path):
     return validate(instance, schema)
 
 
+def _jsonschema_passes(schema_path, instance_path):
+    """Cross-check oracle: validate with the canonical `jsonschema` lib if available.
+    Returns (available, passed). available=False when the lib isn't installed."""
+    try:
+        import jsonschema  # optional; the stdlib validator is authoritative for the DoD
+    except ImportError:
+        return False, None
+    schema = json.load(open(schema_path))
+    instance = json.load(open(instance_path))
+    try:
+        jsonschema.validate(instance, schema)
+        return True, True
+    except jsonschema.ValidationError:
+        return True, False
+
+
 # ---- S1 DoD: the validator must ACCEPT the valid fixture and REJECT the malformed one ----
 def selftest():
     sch = os.path.join(HERE, "schemas")
@@ -121,17 +137,33 @@ def selftest():
         ("edges.schema.json", "edges.invalid.json", False),
     ]
     ok = True
+    xcheck_seen = False
     for schema, inst, should_pass in cases:
-        errs = validate_file(os.path.join(sch, schema), os.path.join(fx, inst))
+        spath = os.path.join(sch, schema)
+        ipath = os.path.join(fx, inst)
+        errs = validate_file(spath, ipath)
         passed = len(errs) == 0
         verdict = "PASS" if passed == should_pass else "REGRESSED"
         if passed != should_pass:
             ok = False
         exp = "accept" if should_pass else "reject"
+        # Optional cross-check against canonical jsonschema: it must AGREE with the
+        # stdlib validator's accept/reject verdict (guards subset-semantics drift).
+        available, js_passed = _jsonschema_passes(spath, ipath)
+        xtag = ""
+        if available:
+            xcheck_seen = True
+            if js_passed != passed:
+                ok = False
+                xtag = f"  [XCHECK-DISAGREE: jsonschema {'accepted' if js_passed else 'rejected'}]"
+            else:
+                xtag = "  [xcheck ✓]"
         print(f"  [{verdict}] {schema} vs {inst}: expected to {exp}, "
-              f"{'accepted' if passed else f'rejected ({len(errs)} err)'}")
+              f"{'accepted' if passed else f'rejected ({len(errs)} err)'}{xtag}")
         if not passed and not should_pass:
             print(f"        first error: {errs[0]}")
+    if not xcheck_seen:
+        print("  (jsonschema not installed — stdlib validator only; cross-check skipped)")
     return ok
 
 
