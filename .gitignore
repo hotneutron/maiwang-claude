@@ -1,0 +1,6 @@
+# Independently-cloned cross-team tool repos (each has its own .git / upstream remote).
+# Tracked as standalone clones, not as content of this repo. Convert to submodules
+# on explicit decision; until then, keep them out of this repo's history.
+cross-team/parallax/
+cross-team/warrant/
+cross-team/artifact_types/
