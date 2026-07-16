@@ -127,6 +127,23 @@ scaffolding, and claim/evidence extraction have reusable prior art — the spike
 concentrated on **cross-paper claim identity/merge** and **projection provenance**, exactly the
 two places C6 and the S5 DoD already pointed.
 
+## Addendum — GraphRAG (read-side prior art)
+
+*Added when the read/query layer (S7) design surfaced GraphRAG as its structural prior art.
+Scope: one table, same format as the seven tools above. Purpose: close the study-gate for the
+read side (S7 `ask.py` + S8 super-nodes) so GraphRAG is a load-bearing citation, not a passing
+analogy. The seven original tools were **write/lit-management** tools; GraphRAG is a
+**read/query** architecture, hence a separate addendum rather than an eighth row.*
+
+### 8. GraphRAG — graph-structured retrieval-augmented generation
+
+| Facet | Finding |
+|---|---|
+| Primitive | LLM extracts entities+relations → build graph → Leiden **community detection** → **LLM community summaries** → dual **local** (entity-neighborhood) + **global** (community-summary) query. |
+| Reuse | Two proven ideas map directly onto our read side: **community summaries → super-nodes** (S7 §9, as materialized views) and **local/global dual retrieval → the S7 read loop** (seed→k-hop local; super-node global). Validates the *shape* of S7 — **modal** convergence, a well-known pattern. |
+| Avoid | **Untyped, free-text edges** (LLM relation descriptions, not a closed `supports\|contradicts\|extends` vocab with `evidence_tier`); **entity resolution by rebuild** (no logged, reversible, `owner:human`-protected merge — our C6); **batch re-summarize-the-world** (no region-scoped invalidation); and above all **confident-but-unchecked answers** (no citation-verify, no graph-SHA stamp). |
+| Failure mode for our spike | Names the read-side failure exactly: a graph-RAG answer with no verify gate is *plausible, not trustworthy* — the precise gap `warrant`/`trace_check.py` exist to close. Confirms our value-add on read is the **citation-verify gate + typed evidence edges + reversible merge**, not the retrieval graph itself (which GraphRAG already proves works). Verdict: **GraphRAG-for-structure, our-code-for-disposal.** |
+
 ## Next (per the converged plan)
 
 - Proceed to **S1** — local `paper.schema.json`, `study` frontmatter, `edges.schema.json`
@@ -135,3 +152,10 @@ two places C6 and the S5 DoD already pointed.
 - Record in S6 any git-native query that feels awkward (D4, gpt's reopen) so storage stays a
   measured constraint, not a taste argument.
 - The next cross-team artifact should carry **spike measurement**, not prose.
+
+## Revision History
+
+| Rev | Date | Change | Driver |
+|---|---|---|---|
+| 1 | 2026-07-16 00:05 PDT | Initial S0 existing-art study (seven lit-management tools + synthesis + study-gate verdict). | study-gate before S1 |
+| 2 | 2026-07-16 02:11 PDT | Added GraphRAG addendum (read-side prior art) to close the study-gate for the S7 read layer / S8 super-nodes. | user request: record GraphRAG as bounded S0 row |
