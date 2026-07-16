@@ -1,0 +1,66 @@
+.plan/260716-1126-proposal-cross-team-bundle-agent-guide.md
+  s_099edcd4095c15::t_eb924bff3d731b 1-375 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a59226e3fe2f1498891aafe","tool_type":"agent","tool_id":"apply_patch","line_ranges":[{"Range":[1,375]}]}]}
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "e44f389d56ee99997fcd39933467eb7416e57c38",
+  "prompts": {},
+  "sessions": {
+    "s_099edcd4095c15": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a585d6c367daf141dc7cd61",
+        "model": "gpt-5.5__max"
+      },
+      "human_author": "Chun Liu <chun.liu@bytedance.com>"
+    }
+  },
+  "attestation_metadata": {
+    ".plan/260716-1126-proposal-cross-team-bundle-agent-guide.md": [
+      {
+        "hash": "s_099edcd4095c15::t_eb924bff3d731b",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              375
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a59226e3fe2f1498891aafe",
+            "tool_type": "agent",
+            "tool_id": "apply_patch",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  375
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "remote_transcripts": {
+    "s_099edcd4095c15": {
+      "tool": "trae",
+      "conversation_id": "6a585d6c367daf141dc7cd61",
+      "session_id": "6a585d6c367daf141dc7cd61",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_099edcd4095c15::t_eb924bff3d731b": {
+      "tool": "trae",
+      "conversation_id": "6a585d6c367daf141dc7cd61",
+      "session_id": "6a585d6c367daf141dc7cd61",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    }
+  }
+}
