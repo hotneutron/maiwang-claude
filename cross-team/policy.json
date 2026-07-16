@@ -1,0 +1,23 @@
+{
+  "_doc": "Local Warrant consumer policy for maiwang-claude. The shared reference policy lives at cross-team/warrant/reference/policy.json (do not edit — it is a submodule); this file is OUR consumer policy, run via `python3 cross-team/warrant/reference/_check_frontmatter.py --policy cross-team/policy.json`. It points Warrant at this repo's .plan/ document root and at the shared artifact_types registry for the drift check.",
+  "version": "1.0",
+  "type_authority": {
+    "findings": "structured",
+    "exercise_step": "structured",
+    "methodology": "structured",
+    "plan": "derived",
+    "proposal": "derived",
+    "reflection": "derived",
+    "reaction": "derived",
+    "cross_check": "derived",
+    "study": "derived",
+    "brainstorm": "speculative",
+    "strategy": "speculative",
+    "schema_plan": "speculative",
+    "domain_extension": "speculative"
+  },
+  "config": {
+    "docs_dir": "../../.plan",
+    "registry": "../../artifact_types/artifact_types.json"
+  }
+}

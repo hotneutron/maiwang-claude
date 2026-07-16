@@ -41,7 +41,7 @@
     "README.md",
     "AGENTS.md"
   ],
-  "_triggers_doc": "path prefixes whose changes cause a commit to be inspected. Added `.plan/` and `AGENTS.md` over the defaults: partner .plan/ changes now SURFACE for manual review (they still can't be auto-tiered — the daemon's is_doc gate hardcodes docs/ — but they are no longer silently skipped). AGENTS.md changes are governance-relevant.",
+  "_triggers_doc": "path prefixes whose changes cause a commit to be inspected. Added `.plan/` and `AGENTS.md` over the defaults so partner changes there are not silently skipped. With `.plan/` also in doc_dirs (below), a partner .plan/*.md is now classified by artifact_type, not just surfaced. AGENTS.md changes are governance-relevant.",
 
   "contracts": [
     "schemas/",
@@ -50,6 +50,9 @@
     "VERSIONS.md"
   ],
   "_contracts_doc": "shared interface artifacts — a change here is T2 (validate + converge).",
+
+  "doc_dirs": ["docs/", ".plan/"],
+  "_doc_dirs_doc": "path prefixes under which a partner .md file is treated as a CLASSIFIABLE doc (frontmatter -> tier), not just surfaced. Requires parallax >= the doc_dirs-config release (submodule pinned at 0869288). Added .plan/ so a partner's .plan/*.md classifies by artifact_type instead of landing in unclassified/manual-review.",
 
   "promote_brainstorm": {
     "days": 30,
