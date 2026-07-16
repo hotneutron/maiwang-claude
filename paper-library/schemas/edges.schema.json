@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Paper Library — Semantic Edges + Claims + Merges",
+  "description": "LOCAL consumer schema (S1) — the Semantic Layer / brain-map atoms. Carries exactly the five things S0 found missing from the shared claims_index (multiple evidence refs per claim; edge lifecycle; reversible merge records; projection provenance) plus the claim/evidence/stance triple from the argument-mining finding. LOCAL ONLY (C8): NOT an amendment to claims_index. Promotion to the shared schema is gated on D5 (>=2 consumers exercise it independently AND >=1 cross-check survives divergent machinery). The relation vocabulary is drawn from gpt's plan (superset of ours).",
+  "type": "object",
+  "required": ["claims", "edges"],
+  "additionalProperties": false,
+  "properties": {
+    "_doc": {"type": "string"},
+    "claims": {
+      "type": "array",
+      "description": "Brain-map claim atoms. Each is one statement grounded in >=1 passage (multiple evidence refs — the first S0 gap over claims_index).",
+      "items": {
+        "type": "object",
+        "required": ["claim_id", "statement", "evidence", "origin"],
+        "additionalProperties": false,
+        "properties": {
+          "claim_id": {"type": "string", "pattern": "^C-[A-Z0-9]+-[0-9]+$", "description": "Stable local claim id."},
+          "statement": {"type": "string", "description": "The claim in one sentence."},
+          "evidence": {
+            "type": "array",
+            "description": "MULTIPLE evidence refs per claim (S0 gap #1). Each points at a paper passage.",
+            "minItems": 0,
+            "items": {
+              "type": "object",
+              "required": ["paper_id", "passage_id"],
+              "additionalProperties": false,
+              "properties": {
+                "paper_id": {"type": "string"},
+                "passage_id": {"type": "string", "pattern": "^p[0-9]+$"}
+              }
+            }
+          },
+          "evidence_tier": {
+            "type": "string",
+            "enum": ["measured", "inferred", "conjectural"],
+            "description": "Reuses the shared artifact_types evidence_axis vocabulary (alignment without amending it)."
+          },
+          "origin": {
+            "type": "string",
+            "enum": ["extraction", "inference", "manual"],
+            "description": "extraction = pulled from a passage; inference = LLM-derived, not directly stated; manual = human-authored. Assertions without source evidence must be visibly labeled inference (S0 invariant)."
+          },
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+          "model_version": {"type": "string", "description": "Model+prompt version that produced a generated claim (adopted from gpt's plan — reproducibility)."},
+          "owner": {
+            "type": "string",
+            "enum": ["machine", "human"],
+            "description": "Manual-correction ownership (S0 gap #2). owner=human MUST NOT be overwritten by regeneration (S4 invariant)."
+          },
+          "last_reviewed": {"type": "string", "format": "date"}
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "description": "Typed semantic relations between claims and/or papers. Lifecycle + provenance are first-class (S0 gaps #3, #5).",
+      "items": {
+        "type": "object",
+        "required": ["edge_id", "from", "to", "rel", "lifecycle", "origin"],
+        "additionalProperties": false,
+        "properties": {
+          "edge_id": {"type": "string", "pattern": "^E-[0-9]+$"},
+          "from": {"type": "string", "description": "A claim_id or paper_id."},
+          "to": {"type": "string", "description": "A claim_id or paper_id."},
+          "rel": {
+            "type": "string",
+            "enum": ["addresses", "uses_method", "evaluates_on", "supports", "contradicts", "extends", "reproduces", "compares_with", "depends_on", "shares_assumption_with", "defines", "supersedes"],
+            "description": "Typed relation vocabulary (superset from gpt's plan). Closed set, code-enforced."
+          },
+          "lifecycle": {
+            "type": "string",
+            "enum": ["proposed", "confirmed", "rejected", "superseded"],
+            "description": "Edge lifecycle (S0 gap #3). LLM emits proposed; human/second-pass confirms or rejects; a newer edge supersedes. Nothing enters projections as truth until confirmed."
+          },
+          "origin": {"type": "string", "enum": ["extraction", "inference", "manual"]},
+          "evidence_tier": {"type": "string", "enum": ["measured", "inferred", "conjectural"]},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+          "model_version": {"type": "string"},
+          "superseded_by": {"type": "string", "description": "If lifecycle=superseded, the edge_id that replaces it."}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"lifecycle": {"const": "superseded"}}},
+            "then": {"required": ["superseded_by"]}
+          }
+        ]
+      }
+    },
+    "merges": {
+      "type": "array",
+      "description": "REVERSIBLE merge records (S0 gap #4). A merge is a LINK, not a destructive rewrite: both original claims are retained; the merge can be undone. Records who/what decided, so identity decisions are auditable (the leak-doctrine applied to knowledge).",
+      "items": {
+        "type": "object",
+        "required": ["merge_id", "canonical", "merged", "decided_by", "reversible"],
+        "additionalProperties": false,
+        "properties": {
+          "merge_id": {"type": "string", "pattern": "^M-[0-9]+$"},
+          "canonical": {"type": "string", "description": "The claim_id kept as canonical."},
+          "merged": {"type": "array", "items": {"type": "string"}, "description": "claim_ids folded into canonical (retained, not deleted)."},
+          "decided_by": {"type": "string", "enum": ["auto", "llm", "human"], "description": "How the identity decision was made (S6 decision-log axis)."},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+          "reversible": {"type": "boolean", "const": true, "description": "Merges are always reversible by construction."},
+          "decided_at": {"type": "string", "format": "date"}
+        }
+      }
+    }
+  }
+}

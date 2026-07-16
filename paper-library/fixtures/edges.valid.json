@@ -1,0 +1,59 @@
+{
+  "_doc": "Valid brain-map fixture: claims with multiple evidence refs, a confirmed typed edge, a superseded edge with superseded_by, and a reversible merge.",
+  "claims": [
+    {
+      "claim_id": "C-MOE-1",
+      "statement": "Routing collapse degrades expert utilization.",
+      "evidence": [
+        {"paper_id": "arxiv:2401.12345", "passage_id": "p1"},
+        {"paper_id": "arxiv:2401.12345", "passage_id": "p2"}
+      ],
+      "evidence_tier": "measured",
+      "origin": "extraction",
+      "confidence": 0.9,
+      "owner": "machine",
+      "last_reviewed": "2026-07-16"
+    },
+    {
+      "claim_id": "C-MOE-2",
+      "statement": "Load-balancing loss mitigates routing collapse.",
+      "evidence": [{"paper_id": "arxiv:2401.12345", "passage_id": "p2"}],
+      "evidence_tier": "inferred",
+      "origin": "inference",
+      "confidence": 0.6,
+      "owner": "human"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "E-1",
+      "from": "C-MOE-2",
+      "to": "C-MOE-1",
+      "rel": "supports",
+      "lifecycle": "confirmed",
+      "origin": "manual",
+      "evidence_tier": "inferred",
+      "confidence": 0.8
+    },
+    {
+      "edge_id": "E-2",
+      "from": "C-MOE-1",
+      "to": "C-MOE-2",
+      "rel": "compares_with",
+      "lifecycle": "superseded",
+      "origin": "inference",
+      "superseded_by": "E-1"
+    }
+  ],
+  "merges": [
+    {
+      "merge_id": "M-1",
+      "canonical": "C-MOE-1",
+      "merged": ["C-MOE-1-dup"],
+      "decided_by": "llm",
+      "confidence": 0.7,
+      "reversible": true,
+      "decided_at": "2026-07-16"
+    }
+  ]
+}

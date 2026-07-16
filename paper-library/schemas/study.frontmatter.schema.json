@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Paper Library — study Frontmatter",
+  "description": "LOCAL consumer schema (S1) for the per-paper `study` doc frontmatter — the Personal Layer entry point + paper-map node. artifact_type MUST be `study` (registry v1.3: systematic synthesis of external references for internal use), authority `derived`. Doubles as the reading queue via reading_status/reading_tier. Validated as a YAML-subset object (the reference validator parses the frontmatter block into this shape).",
+  "type": "object",
+  "required": ["artifact_type", "authority", "paper_id"],
+  "additionalProperties": true,
+  "properties": {
+    "artifact_type": {"type": "string", "const": "study"},
+    "authority": {"type": "string", "const": "derived"},
+    "paper_id": {"type": "string", "pattern": "^(arxiv|doi|s2|local):[A-Za-z0-9._/-]+$", "description": "Links this study doc to its Source-Layer paper record."},
+    "topics": {"type": "array", "items": {"type": "string"}, "description": "Many-to-many topic tags — NOT a single hierarchy (S0/C2: topics are views over a graph)."},
+    "reading_status": {"type": "string", "enum": ["toread", "reading", "read"], "description": "Turns the study doc into the reading queue with no extra structure."},
+    "reading_tier": {"type": "integer", "minimum": 1, "maximum": 4, "description": "Reuses parallax's T1 must-read .. T4 skip scale for reading priority."},
+    "claims": {"type": "array", "items": {"type": "string"}, "description": "claim_ids extracted from this paper into the brain-map (edges.schema.json)."}
+  }
+}

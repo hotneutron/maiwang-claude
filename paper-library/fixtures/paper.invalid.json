@@ -1,0 +1,10 @@
+{
+  "paper_id": "arxiv 2401.12345",
+  "identity": {
+    "authors": ["A. Author"],
+    "external_ids": {"arxiv": "2401.12345", "unknown_id": "nope"}
+  },
+  "passages": [
+    {"passage_id": "1", "text": "bad passage id (must be p<number>)"}
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Paper Library — Paper Record",
+  "description": "LOCAL consumer schema (S1). One canonical paper identity + source metadata + stable passage ids. Deliberately NOT an amendment to the shared claims_index — per the converged spike proposal (C8), the first schema stays local until a corpus spike proves the shape with >=2 consumers under divergent machinery (D5). The Source Layer atom: immutable/append-only source-of-truth for a paper and its citable passages.",
+  "type": "object",
+  "required": ["paper_id", "identity", "passages"],
+  "additionalProperties": false,
+  "properties": {
+    "paper_id": {
+      "type": "string",
+      "description": "Stable local paper id, namespaced by source. Reuses the external-id-first discipline from the Zotero finding (S0).",
+      "pattern": "^(arxiv|doi|s2|local):[A-Za-z0-9._/-]+$"
+    },
+    "identity": {
+      "type": "object",
+      "description": "Canonical bibliographic identity with tracked external ids (S0/Zotero: resolve to ONE record before anything else). Invariant: one paper -> one identity.",
+      "required": ["title"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {"type": "string"},
+        "authors": {"type": "array", "items": {"type": "string"}},
+        "year": {"type": "integer"},
+        "venue": {"type": "string"},
+        "external_ids": {
+          "type": "object",
+          "description": "All known external identifiers, tracked so dedup is deterministic (not fuzzy-title).",
+          "additionalProperties": false,
+          "properties": {
+            "doi": {"type": "string"},
+            "arxiv": {"type": "string"},
+            "s2": {"type": "string", "description": "Semantic Scholar corpus id"},
+            "url": {"type": "string", "format": "uri"}
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "description": "Imported source artifacts (Source Layer). Append-only; regeneration must not mutate these.",
+      "additionalProperties": false,
+      "properties": {
+        "abstract": {"type": "string"},
+        "fulltext_ref": {"type": "string", "description": "Repo-relative path or content hash of the imported full text; absent for abstract-first import (D4 open)."},
+        "imported_at": {"type": "string", "format": "date"},
+        "import_method": {"type": "string", "enum": ["abstract", "fulltext"], "description": "Records the S0 open decision (abstract-first vs full-text) per paper, so storage/coverage stays a measured constraint."}
+      }
+    },
+    "passages": {
+      "type": "array",
+      "description": "Stable, citable passage ids — the atom that makes 'trace every survey statement to source' enforceable (S0/argument-mining finding). Passage ids MUST be stable across derived-artifact regeneration (S4 invariant).",
+      "items": {
+        "type": "object",
+        "required": ["passage_id", "text"],
+        "additionalProperties": false,
+        "properties": {
+          "passage_id": {
+            "type": "string",
+            "description": "Stable id, unique within this paper. Referenced by claims' evidence refs.",
+            "pattern": "^p[0-9]+$"
+          },
+          "text": {"type": "string", "description": "The verbatim passage (or a stable hash+locator if full text is not stored)."},
+          "locator": {"type": "string", "description": "Human locator: section / figure / table / page, for provenance display."}
+        }
+      }
+    }
+  }
+}

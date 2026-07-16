@@ -1,0 +1,38 @@
+{
+  "_doc": "Malformed brain-map fixture: bad rel (not in vocab), bad lifecycle enum, a superseded edge MISSING superseded_by (allOf/if-then), and a merge with reversible:false (const violation).",
+  "claims": [
+    {
+      "claim_id": "C-MOE-1",
+      "statement": "ok",
+      "evidence": [],
+      "origin": "extraction"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "E-1",
+      "from": "C-MOE-1",
+      "to": "C-MOE-1",
+      "rel": "correlates_with",
+      "lifecycle": "maybe",
+      "origin": "inference"
+    },
+    {
+      "edge_id": "E-2",
+      "from": "C-MOE-1",
+      "to": "C-MOE-1",
+      "rel": "supports",
+      "lifecycle": "superseded",
+      "origin": "inference"
+    }
+  ],
+  "merges": [
+    {
+      "merge_id": "M-1",
+      "canonical": "C-MOE-1",
+      "merged": ["C-MOE-1-dup"],
+      "decided_by": "human",
+      "reversible": false
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "paper_id": "arxiv:2401.12345",
+  "identity": {
+    "title": "A Sample Paper on MoE Routing",
+    "authors": ["A. Author", "B. Coauthor"],
+    "year": 2024,
+    "venue": "NeurIPS",
+    "external_ids": {"arxiv": "2401.12345", "doi": "10.1000/xyz"}
+  },
+  "source": {
+    "abstract": "We study routing in mixture-of-experts models.",
+    "imported_at": "2026-07-16",
+    "import_method": "abstract"
+  },
+  "passages": [
+    {"passage_id": "p1", "text": "Routing collapse degrades expert utilization.", "locator": "\u00a73.2"},
+    {"passage_id": "p2", "text": "Load-balancing loss mitigates collapse.", "locator": "Fig. 4"}
+  ]
+}
