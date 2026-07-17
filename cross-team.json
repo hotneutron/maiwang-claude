@@ -1,0 +1,83 @@
+{
+  "_doc": "Consumer-owned live config for the cross-team bundle. This file is versioned by maiwang-claude and intentionally lives outside the cross-team/ submodule.",
+  "version": "1.0",
+  "parallax": {
+    "partners": {
+      "gpt": {
+        "path": "../maiwang-gpt",
+        "team_name": "maiwang-gpt",
+        "protocol_version": "2.2",
+        "last_pinned": "43f6d959da144b5e4642c9fdeca3dcc2ef6acb43",
+        "last_sync": "2026-07-16"
+      }
+    },
+    "tiers": {
+      "self_name": "maiwang-claude",
+      "addressed": ["reaction", "cross_check", "proposal"],
+      "addressed_to_us": [],
+      "atypes": {
+        "methodology": 1,
+        "findings": 2,
+        "plan": 2,
+        "schema_plan": 2,
+        "brainstorm": 3,
+        "backlog": 3,
+        "study": 3,
+        "domain_extension": 3,
+        "strategy": 3,
+        "exercise_step": 3,
+        "exercise_plan": 3,
+        "reflection": 4,
+        "report": 4
+      },
+      "triggers": [
+        "docs/",
+        ".plan/",
+        "sync_ledger.json",
+        "cross_team/",
+        "PROTOCOL.md",
+        "PROTOCOL_INVARIANTS.json",
+        "VERSIONS.md",
+        "schemas/",
+        "daemon/",
+        "spec-tests/",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "contracts": [
+        "schemas/",
+        "PROTOCOL.md",
+        "PROTOCOL_INVARIANTS.json",
+        "VERSIONS.md"
+      ],
+      "doc_dirs": ["docs/", ".plan/"],
+      "promote_brainstorm": {
+        "days": 30,
+        "min_overlap": 2,
+        "stop": ["maiwang", "gpt", "claude", "cross", "team", "the", "and", "for", "map"]
+      }
+    }
+  },
+  "warrant": {
+    "type_authority": {
+      "findings": "structured",
+      "exercise_step": "structured",
+      "methodology": "structured",
+      "plan": "derived",
+      "proposal": "derived",
+      "reflection": "derived",
+      "reaction": "derived",
+      "cross_check": "derived",
+      "study": "derived",
+      "brainstorm": "speculative",
+      "strategy": "speculative",
+      "schema_plan": "speculative",
+      "domain_extension": "speculative"
+    },
+    "config": {
+      "consumer_root": ".",
+      "docs_dir": ".plan",
+      "registry": "cross-team/artifact_types/artifact_types.json"
+    }
+  }
+}

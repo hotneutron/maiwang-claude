@@ -6,10 +6,8 @@ convergence: propagated
 parent_artifacts:
   - AGENTS.md
   - .gitmodules
-  - cross-team/.gitignore
-  - cross-team/partners.json
-  - cross-team/tiers.json
-  - cross-team/policy.json
+  - cross-team.json
+  - cross-team/cross-team.default.json
   - cross-team/parallax/README.md
   - cross-team/warrant/reference/README.md
   - gpt:.plan/260716-1142-reaction-cross-team-bundle-agent-guide.md
@@ -538,3 +536,4 @@ from a fresh consumer without false missing-parent errors and both tools consume
 | 5 | 2026-07-16 12:12 PDT | Resolved OQ1-OQ8: accepted recommendations except no examples, no prior-art paper/study for OSS packaging, and `.plan/` allowed only in default config, not runtime code. | user request |
 | 6 | 2026-07-16 12:17 PDT | Consolidated live consumer config into one versioned root `cross-team.json` outside the `cross-team/` submodule; bundle now ships one `cross-team.default.json`. | user request |
 | 7 | 2026-07-16 12:23 PDT | Made upstream one-file config support and Warrant `consumer_root` hard prerequisites before switching consumers; removed temporary split-config / absolute-policy shim path. | user request |
+| 8 | 2026-07-16 22:50 PDT | Updated parent artifacts after migrating this consumer from three direct tool submodules to one `cross-team` bundle submodule plus root `cross-team.json`. | local migration |
