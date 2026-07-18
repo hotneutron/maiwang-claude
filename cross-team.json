@@ -7,9 +7,7 @@
       "gpt": {
         "path": "../maiwang-gpt",
         "team_name": "maiwang-gpt",
-        "protocol_version": "2.2",
-        "last_pinned": "0b5534c9869143a424f70ce7c18736e38d154dd4",
-        "last_sync": "2026-07-18"
+        "protocol_version": "2.2"
       }
     },
     "tiers": {
