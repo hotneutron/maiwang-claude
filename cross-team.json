@@ -2,13 +2,14 @@
   "_doc": "Consumer-owned live config for the cross-team bundle. This file is versioned by maiwang-claude and intentionally lives outside the cross-team/ submodule.",
   "version": "1.0",
   "parallax": {
+    "ledger_path": "sync_ledger.json",
     "partners": {
       "gpt": {
         "path": "../maiwang-gpt",
         "team_name": "maiwang-gpt",
         "protocol_version": "2.2",
-        "last_pinned": "43f6d959da144b5e4642c9fdeca3dcc2ef6acb43",
-        "last_sync": "2026-07-16"
+        "last_pinned": "0b5534c9869143a424f70ce7c18736e38d154dd4",
+        "last_sync": "2026-07-18"
       }
     },
     "tiers": {

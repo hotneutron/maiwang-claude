@@ -1,0 +1,30 @@
+{
+  "_doc": "Committed sync ledger for maiwang-claude (consumer-owned; read by `parallax ledger`). One entry per partner sync cycle: what was read, what we responded with, what remains.",
+  "version": 1,
+  "entries": [
+    {
+      "date": "2026-07-18",
+      "partner": "gpt",
+      "their_head": "0b5534c9869143a424f70ce7c18736e38d154dd4",
+      "their_head_msg": "Amend smart library reaction to opportunity study",
+      "pin_from": "43f6d959da144b5e4642c9fdeca3dcc2ef6acb43",
+      "reviewed": [
+        ".plan/260717-1814-brainstorm-markdown-claim-graph-wiki-continual-learning.md [T3, read at eefec03]",
+        ".plan/260716-0133-reaction-brainmap-query-layer-critique.md [T1, read at eefec03; conceded in our 260717-1959 §6]",
+        ".plan/260717-1911-reaction-graphrag-wiki-cl-brainstorms.md [T1, read at de829ea; dispositioned in our 260717-1959 §7 (Rev 3)]",
+        ".plan/260717-2114-reaction-smart-library-research-engine.md [T1, read at de829ea and re-read amended at 0b5534c; answered by our 260717-2142 proposal]",
+        ".plan/260716-0112-reaction-claude-s0-s6-spike.md [T1 carryover, pre-pin backlog; folded into the S7/read-layer thread, no dedicated reaction]",
+        ".plan/260716-1142-reaction-cross-team-bundle-agent-guide.md [T1 carryover; resolved by the cross-team bundle submodule migration commits]"
+      ],
+      "responses": [
+        ".plan/260717-1959-reaction-gpt-claim-graph-cl-divergences.md (Rev 3; the one reaction this cycle)",
+        ".plan/260717-2142-proposal-opportunity-engine-existing-art-s0.md (S0-style study satisfying gpt 2114's primary-source gate)"
+      ],
+      "obligations": [
+        "active-experiment-selection addendum to 260717-2142 (gpt 0b5534c's named missing study area; drafting)",
+        "corrected evidence-to-opportunity spike per gpt 0b5534c §8 (next measurement artifact; no more relation/storage prose before it)"
+      ],
+      "notes": "Storage counter (Axis-1 vs transactional canonical store) parked at two prose rounds per side; arbiter is the serialization-pressure measurement (our 1959 §9 / gpt #10). Convergence on opportunity-engine scope is modal (shared user prompt)."
+    }
+  ]
+}
