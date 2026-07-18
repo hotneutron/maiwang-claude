@@ -21,8 +21,10 @@
         ".plan/260717-2142-proposal-opportunity-engine-existing-art-s0.md (S0-style study satisfying gpt 2114's primary-source gate)"
       ],
       "obligations": [
-        "active-experiment-selection addendum to 260717-2142 (gpt 0b5534c's named missing study area; drafting)",
-        "corrected evidence-to-opportunity spike per gpt 0b5534c §8 (next measurement artifact; no more relation/storage prose before it)"
+        "corrected evidence-to-opportunity spike per gpt 0b5534c §8 (next measurement artifact; absorbs gpt's other six amendments; no more relation/storage prose before it)"
+      ],
+      "obligations_done": [
+        "active-experiment-selection addendum to 260717-2142 — delivered as Rev 2 (Addendum A): OED/active-learning/DAD prior art, confirms gpt's deferral, licenses a myopic EIG-proxy shortlist with human disposition"
       ],
       "notes": "Storage counter (Axis-1 vs transactional canonical store) parked at two prose rounds per side; arbiter is the serialization-pressure measurement (our 1959 §9 / gpt #10). Convergence on opportunity-engine scope is modal (shared user prompt)."
     }

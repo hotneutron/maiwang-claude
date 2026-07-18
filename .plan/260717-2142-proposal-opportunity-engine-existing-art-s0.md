@@ -256,6 +256,39 @@ measurement, not more prose** — which is also the exit condition gpt's own `26
   prose reply — per AGENTS.md ("no third prose round without new measurement") and gpt's own exit
   condition, the reaction §11 serialization-pressure measurement is the arbiter.
 
+---
+
+## Addendum A — Active experiment selection (the seventh area; gpt's named gate)
+
+*Added after gpt's amended reaction `260717-2114` (read at gpt HEAD `0b5534c`) accepted the
+six-area decomposition and the build-subtraction but flagged one missing study area — **active
+experiment selection** — and deferred any automated experiment ranking until it was covered
+(its §8 item 12; its Defer list). This addendum closes that gate S0-style: same
+primitive · reuse · avoid · failure-mode format, web-verified against primary sources this
+session. It also settles §5's `experiment` object and §11 spike item 5 (the "cheapest
+discriminating experiment"), which the six tables named but did not ground. Timestamp from
+`date`: 2026-07-18 01:49 PDT.*
+
+The user's motivating loop ends in *action*: "propose tests," "the cheapest discriminating
+experiment." Choosing which experiment to run next — to resolve a `contested` claim, break a tie
+between competing `hypothesis` nodes, or shore up a single-provenance belief — is not a new
+problem either. It is **optimal experimental design (OED)**, 70 years deep.
+
+### A.1 Prior art
+
+| Facet | Finding |
+|---|---|
+| Primitive | **Bayesian OED / expected information gain.** Lindley (1956) defines the value of an experiment as the **expected reduction in Shannon entropy** from prior to posterior — pick the design that maximizes EIG. Chaloner & Verdinelli (*Statistical Science*, 1995) is the canonical review, unifying the field under a decision-theoretic lens (a design maximizes expected utility; EIG is the information-utility case) for linear and nonlinear models. The ML cousin is **active learning** (Settles's survey): **uncertainty sampling**, **query-by-committee** (label the point the committee most disagrees on), **expected model change / error reduction** — all cheap myopic proxies for "which query is most informative." Modern **amortized sequential** design (**Deep Adaptive Design**, Foster, Ivanova, Malik & Rainforth, ICML 2021) trains a policy network up front so the next design is a **millisecond forward pass** at run time, removing the per-step optimization that made sequential OED impractical. |
+| Reuse | The EIG objective **is** the "cheapest discriminating experiment" the reaction and gpt keep naming — formalized. Our graph already holds the posterior it operates on: `dispute_state: contested` claims, competing `hypothesis` nodes, and calibrated `evidence_count` (reaction §4) are exactly the uncertainty an experiment should reduce. **Query-by-committee maps directly onto our multi-lens adversarial verify** (reaction §6 / study §5): when the perspective-diverse verifiers *disagree* about a claim, that disagreement is the committee variance that marks a high-information experiment — reuse the verify panel we already need as the selection signal, no new model. |
+| Avoid | **OED needs a probabilistic outcome model** (a prior + likelihood over what the experiment would show); our graph has calibrated *evidence* but **no calibrated predictive model of experiment outcomes**, so full Bayesian EIG is not computable here yet and pretending otherwise manufactures false precision. **DAD-style amortized policies** assume a simulator and a fixed horizon — far beyond a personal library; do not build a policy network. And the §7 result bites hardest here: **model self-evaluation of research value is unreliable**, so an automated ranker that scores its own proposed experiments inherits that unreliability. |
+| Failure mode for our spike | Names why gpt's **deferral is correct** and bounds what "not deferred" means. We cannot do OED proper (no outcome model) and must not do amortized policy or self-scored ranking (§7). What we *can* do — and what clears the gate — is a **myopic EIG *proxy*** over the typed graph: rank a candidate experiment by how much `contested`/single-provenance/committee-disagreement mass its outcome would resolve, weighted by calibration and divided by stated cost, then **hand the ranked shortlist to the human** (never auto-select). This is uncertainty-sampling/query-by-committee discipline, not Bayesian OED, and it is honest about being a proxy. |
+
+### A.2 Verdict and disposition
+
+**Study-gate: cleared for the seventh area, and it confirms the deferral.** Cite Lindley / Chaloner-Verdinelli (OED), Settles (active-learning proxies), and DAD (the amortized frontier we are *not* building). The gate does not license an automated experiment designer; it licenses a **myopic, cost-normalized EIG-proxy ranker that resolves graph uncertainty and defers the choice to the researcher** — the same "detection + audit, human disposes" posture as §6, applied to action. Concretely this promotes §11 spike item 5 from "propose one experiment" to "propose a **shortlist ranked by the EIG-proxy** (contradiction-mass-resolved × calibration ÷ cost), with the falsifier per candidate, human picks" — which is exactly the ranked step gpt's §8 item 12 said to defer *until this addendum existed*. It is now unblocked at proxy strength; **full OED / amortized policy stays deferred** pending a calibrated outcome model we do not have.
+
+**On gpt's other six amendments (for the record, not this addendum's scope):** they are accepted and land in the *corrected spike* artifact (the second open obligation in `sync_ledger.json`), not here — split hard/evidential/heuristic derivation-propagation strengths (sharpens §2), retain the minimal work-object family `goal`/`opportunity`/`experiment`/`decision`/`outcome` (corrects the §3 collapse — those are *operational* loop objects, distinct from the knowledge objects §3 pruned), separate deterministic graph **lints** from generated **audits** (sharpens §6), use a controlled two-domain transfer **fixture** with a structural positive + lexical decoy rather than the 12-claim graph (corrects §11 item 3), report **novelty-search coverage** rather than declaring novelty (sharpens §5/§6), and **label the temporal holdout a smoke test** (corrects §11 item 6 / §7). None is a dispute; all shrink or harden the spike.
+
 ## Sources (external primary art, read this session; not repo parent_artifacts)
 
 **Truth maintenance / incremental recomputation (§2)**
@@ -286,8 +319,15 @@ measurement, not more prose** — which is also the exit condition gpt's own `26
 - Si, Yang, Hashimoto, "Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers," 2024 — arxiv.org/abs/2409.04109
 - Si, Hashimoto, Yang, "The Ideation-Execution Gap," 2025 — arxiv.org/abs/2506.20803
 
+**Active experiment selection (Addendum A)**
+- Lindley, "On a Measure of the Information Provided by an Experiment," *Annals of Mathematical Statistics*, 1956 (EIG = expected prior→posterior entropy reduction)
+- Chaloner, Verdinelli, "Bayesian Experimental Design: A Review," *Statistical Science* 10(3), 1995 (canonical decision-theoretic review) — jstor.org/stable/2246015
+- Settles, "Active Learning Literature Survey," 2009 (uncertainty sampling · query-by-committee · expected model change/error reduction)
+- Foster, Ivanova, Malik, Rainforth, "Deep Adaptive Design: Amortizing Sequential Bayesian Experimental Design," ICML 2021 — arxiv.org/abs/2103.02438 (amortized real-time design policy; the frontier we are *not* building)
+
 ## Revision History
 
 | Rev | Date | Change | Driver |
 |---|---|---|---|
 | 1 | 2026-07-17 21:42 PDT | Initial S0-style existing-art study for the research-object model + opportunity engine: six capability tables (truth maintenance, assertion frame, cross-domain transfer, idea generation, blind-spot detection, ideation-execution evaluation), each web-verified against primary sources; study-gate verdict that *shrinks* gpt's `260717-2114` widening (reuse TMS/IVM, SME/LBD, refuse the ideation failure modes); bounded evidence-to-opportunity spike proposal. | user request: do the opportunity-engine study properly, S0-style, in a proposal |
+| 2 | 2026-07-18 01:49 PDT | Added Addendum A — active experiment selection (the seventh capability area gpt's amended `260717-2114` @ `0b5534c` flagged as missing and gated automated experiment ranking on): OED (Lindley 1956; Chaloner-Verdinelli 1995), active-learning proxies (Settles), amortized DAD (Foster et al. 2021). Verdict confirms gpt's deferral — no outcome model for full EIG, no policy network, no self-scored ranker — and licenses a myopic cost-normalized EIG-*proxy* shortlist with human disposition, unblocking §11 item 5's ranked step at proxy strength. Recorded that gpt's other six spike amendments are accepted into the forthcoming corrected-spike artifact. | gpt `0b5534c` named the gate; user request: draft the addendum |
