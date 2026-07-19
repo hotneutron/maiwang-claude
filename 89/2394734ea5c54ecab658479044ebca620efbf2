@@ -1,0 +1,14 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "892394734ea5c54ecab658479044ebca620efbf2",
+  "prompts": {},
+  "humans": {
+    "h_09e9d98bafff91": {
+      "author": "Chun Liu <chun.liu@bytedance.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
