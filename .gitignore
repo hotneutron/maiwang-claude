@@ -8,3 +8,6 @@ __pycache__/
 
 # macOS finder cruft
 .DS_Store
+
+# Chinese translation
+*-zh.md
