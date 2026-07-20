@@ -1,0 +1,21 @@
+.plan/260720-1000-study-gray-literature-conflicting-claims-verification-s0.md
+  s_bd4db04b7c0fe7::t_0cbfaa73a3c967 1-334
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "facbccd1066c41d7e9ccc1cae10f04927af1fb7b",
+  "prompts": {},
+  "sessions": {
+    "s_bd4db04b7c0fe7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "317c6e1d-01ce-45e6-9f35-83b2a959cafc",
+        "model": "unknown"
+      },
+      "human_author": "Chun Liu <chun.liu@bytedance.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
