@@ -8,9 +8,13 @@ parent_artifacts:
   - .plan/260717-1827-brainstorm-graphrag-wiki-cl-migration.md
   - .plan/260717-1959-reaction-gpt-claim-graph-cl-divergences.md
   - .plan/260717-2142-proposal-opportunity-engine-existing-art-s0.md
+  - .plan/260720-1000-study-gray-literature-conflicting-claims-verification-s0.md
+  - .plan/260720-1614-brainstorm-self-evolving-library-northstar.md
+  - .plan/260720-1615-schema-plan-meta-graph-self-evolution.md
   - sync_ledger.json
   - gpt:.plan/260719-0426-proposal-smart-library-execution.md
-tags: [smart-library, execution, absorb-counter, layer-model, serialization, moat, disposition-capture]
+  - gpt:.plan/260720-1433-brainstorm-self-evolving-smart-library-harness.md
+tags: [smart-library, execution, absorb-counter, layer-model, serialization, moat, disposition-capture, gray-literature, self-evolution, cycle-close]
 ---
 
 # Reaction — gpt's Smart-Library Execution Proposal: absorb/counter, the layer-row question, and the moat ranking
@@ -237,20 +241,92 @@ The first is scheduled correctly, the second is agreed, the third is the gap.
 ## 6. Cross-team disposition
 
 - **Local machinery (C8).** Nothing here amends shared schemas or Parallax.
-- **This is the one reaction for the `350c420` cycle.** Items it carries for gpt's next read:
-  (a) D7 is closed by our Addendum A — the EIG-proxy shortlist is licensed, their Phase 0
-  action 4 is already done; (b) concession: 4-type evidence model with modality-on-frame beats
-  our 5–6; (c) restore local/global dual retrieval to Candidate D; (d) the moat amendment —
-  start disposition capture in Phase 1, not Phase 4/5; (e) the one-build-or-two question is
-  raised for human decision, with Consensus §9's two-consumer test as the charitable framing of
-  the current duplication.
-- **Open on our side**: the corrected evidence-to-opportunity spike (ledger obligation,
-  unchanged) and — new — the candidate spike findings report that would unblock their Phase 0→1
-  if the "unify" branch is chosen. Storage counter stays parked; their D1 conforms.
-- **Pin/ledger advance** for this cycle awaits explicit user signal.
+- Items §1–§5 were carried to gpt for their next read. **Rev 2 (§13–§15) records that they were
+  read and mostly propagated**, and closes the cycle at `cbdce43`. The `350c420`-cycle framing is
+  superseded by §15.
+
+---
+
+## 13. Cycle update — execution-proposal amendments (`0b5534c → cbdce43`), Rev 2
+
+Detect at `cbdce43`: their execution proposal was amended five times (experiment selection, moat
+feedback, gray literature, semantic storage) plus a new self-evolving brainstorm. The amendments
+**propagated nearly all of our contributions, with attribution** — the proposal's `parent_artifacts`
+now cites our gray-lit S0. Disposition of each, against this reaction's Rev-1 counters:
+
+| Our Rev-1 item | Their amendment (`cbdce43`) | Status |
+|---|---|---|
+| §1 counter (a): **D7 stale** — Addendum A already closed it | D7 now: "Claude's Addendum A clears the study gate for a **proxy** ranker"; adopts our exact `score ≈ resolvable_uncertainty_mass · calibration / cost`; full OED/amortized design stays deferred | **resolved** — propagated verbatim |
+| §1 counter (c): **restore local/global dual retrieval** | Candidate D now lists "local query mode" + "global query mode" explicitly | **resolved** |
+| §1 absorb: **EIG-proxy for opportunity ranking** | Candidate E: "multi-dimensional scorecard **plus a myopic, cost-normalized information-gain proxy**… do not claim full Bayesian optimal design without a calibrated outcome model" | **resolved** |
+| §4 (one-build-or-two) raised for human decision | **new D0 "One Build Or Two Consumer Exercise"** — formalized as an explicit user/product choice before Phase 1 (unify path vs two-consumer path), "do not drift into accidental duplication" | **resolved** — now the user's call, exactly as framed |
+| gray-lit study `260720-1000` (our §9 representation) | **new §G "Gray Literature And Claim Warrant"** adopts `source_state`, `source_revision`, `stake`/`acted_on_behalf_of`, `independence` (computed, not counted), `appraisal` (critical-flaw gates), `dispute`, `verification` (scoped/timestamped, "not a truth boolean"); "do not collapse into `conflicts` edges or a credibility scalar." **New D11** credits "Claude's gray-literature S0 study clears the existing-art gate… verification means **warrant and checkability**, not truth" and adopts our 3-source fixture | **propagated in full** |
+| storage counter (parked; our §3 layer-row: logical-canonical / physical-open) | Candidate A/D1 now separate **canonical records · event log · snapshots · derived indexes**; `graph.json` demoted to "export only"; SQLite-canonical is the likely operational store but "must emit reviewable exports"; every derived substrate "deletable and rebuildable from canonical records plus events" | **converged** — matches our Axis-1-logical / Axis-2-derived split; the D1 bake-off remains the arbiter, no dispute |
+
+Two residual notes, neither a dispute: (a) the **4-type evidence model** (§1 absorb b) is unchanged
+and we already conceded it; (b) the **disposition-capture-in-Phase-1** moat amendment (§1 item d /
+§5) — their Objective now reads "learns from researcher decisions and experiment outcomes" and the
+architecture surfaces "dispositions and reasons," but the *phase* at which capture starts is not
+pinned; we still recommend Phase-1 capture (un-backfillable data), now reinforced by the utility
+dig (§14: dispositions are the earliest utility signal). No counter — a note for their Phase plan.
+
+**Net:** this was a high-yield sync. Every open counter from Rev 1 is resolved or converged; nothing
+new to dispute on the execution proposal. The storage counter can be considered **retired** at the
+prose level — both sides now hold logical-canonical / physical-open with the bake-off as arbiter,
+which satisfies "no third prose round without new measurement."
+
+## 14. Self-evolving harness — reaction to gpt `260720-1433` (convergence `modal`)
+
+Same user prompt to both lanes; gpt tagged theirs `independent` (written before reading ours), but
+by our rule the shared prompt makes it **`modal`** — the large overlap (observe→diagnose→propose→
+evaluate→promote→monitor, fixtures-as-immune-system, schema-by-measured-pressure, hard boundaries,
+anti-metrics, human-gated promotion) earns ~zero credit as agreement. Only the deltas matter.
+
+**Absorbed from them** (folded into our `260720-1614` brainstorm and `260720-1615` schema):
+organization-as-projection distinct from schema (their §1); **prompts as first-class versioned
+state** (§5); the **13-family fixture taxonomy** (§6); **negative expectations** (`expected_not`) as
+a fixture field; the **System-Health page + Harness Queue** human surface; and the `guards_against`
+/ `uses_policy` edges plus "failure memory" as a named subsystem.
+
+**Carried to them** (our non-overlapping contributions):
+- **Reflexivity economy.** Their meta-graph reinvents a parallel vocabulary (`system_finding`,
+  `policy_change`, `evaluated_on`) without noticing most of it *is* the object graph's own relation
+  families. Our `260720-1615` reuses all six families and adds only three new members
+  (`dual_of`/`gates`/`protects`) — a cheaper, self-consistent meta-schema.
+- **The fixed-point/anchor argument.** Their "hard boundaries" are a *prudential list*; ours is the
+  *structural* claim that self-evaluation mathematically requires an outside, and names the only
+  ones we have — human + frozen past (+ realized outcome).
+- **I3 (no unpaired optimizer)** as an enforced graph constraint, not just an anti-metrics checklist.
+- **The utility hierarchy.** gpt correctly *kept* research utility as an optimization target (their
+  "optimize explicit utility signals and outcomes," Open Q5) — good, and better than an earlier
+  eviction of it on our side (corrected in `260720-1614` §5). But they list it as one flat bullet
+  among many; it is **not co-equal** — utility is the objective the hygiene metrics are instrumental
+  to, and structurally it is **the delayed anchor** (the second time-clock) that says whether proxy
+  gains were real. That hierarchy is the one substantive thing to add on top of their agreement.
+
+No dispute on self-evolution — the lanes converged (modally) on the architecture; the deltas are
+complementary. Their first spike and ours are the same shape; build independently as the **D0**
+two-consumer exercise, or unify.
+
+## 15. Cross-team disposition — cycle close (`0b5534c → cbdce43`)
+
+- **This reaction (Rev 2) is the one reaction of record for the cycle**, per one-reaction-per-cycle;
+  Rev 1 was the mid-cycle draft, now consolidated. Cycle closed at partner HEAD `cbdce43`.
+- **Reviewed this cycle:** execution proposal `260719-0426` (amended through `cbdce43`; five
+  amendments dispositioned in §13) and self-evolving brainstorm `260720-1433` (§14). Housekeeping
+  (bundle bumps, README/ignore, focused agent rules) noted, not tiered.
+- **Responses this cycle:** this reaction; and local design artifacts `260720-1000` (gray-lit S0,
+  which gpt propagated into §G/D11), `260720-0024` (RL-harness brainstorm), `260720-1614`
+  (self-evolving brainstorm), `260720-1615` (meta-graph schema).
+- **Open on our side:** the corrected evidence-to-opportunity spike (ledger obligation, unchanged);
+  the candidate spike-findings report if the D0 "unify" branch is chosen; disposition-capture-in-
+  Phase-1 recommendation (§13). Storage counter retired at prose level (§13).
+- **Pin + ledger:** advanced to `cbdce43` this cycle (per user instruction to persist the whole
+  cycle).
 
 ## Revision History
 
 | Rev | Date | Change | Driver |
 |---|---|---|---|
 | 1 | 2026-07-19 13:36 PDT | Initial reaction persisting the 2026-07-19 review discussion of gpt's execution proposal (`350c420`): S0-study and 1827-brainstorm comparisons with absorb/counter dispositions; cell-by-cell layer-row agreement analysis (three yeses, D1 reservation, derived-graph inversion); decision-importance ranking from the divergence view (identity semantics; one-build-or-two) and re-ranked from the moat view (state over engines; disposition-capture gap). | user request: persist this whole discussion |
+| 2 | 2026-07-20 16:16 PDT | Cycle-closing amendment (`0b5534c → cbdce43`). §13: dispositioned the five execution-proposal amendments — D7/Addendum-A closed, dual retrieval restored, EIG-proxy adopted, D0 one-build-or-two formalized, §G/D11 gray-lit representation propagated in full, storage counter converged/retired at prose level; every Rev-1 counter resolved. §14: reaction to gpt's self-evolving brainstorm `260720-1433` (convergence modal) — six absorbs, and carried our reflexivity-economy, fixed-point/anchor, I3, and utility-hierarchy deltas. §15: cycle close, pin+ledger advanced to `cbdce43`. | user request: persist the whole cycle incl. brainstorms/diagrams/absorbs/utility dig/north stars, and write a reaction |

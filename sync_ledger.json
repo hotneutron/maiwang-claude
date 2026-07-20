@@ -27,6 +27,33 @@
         "active-experiment-selection addendum to 260717-2142 — delivered as Rev 2 (Addendum A): OED/active-learning/DAD prior art, confirms gpt's deferral, licenses a myopic EIG-proxy shortlist with human disposition"
       ],
       "notes": "Storage counter (Axis-1 vs transactional canonical store) parked at two prose rounds per side; arbiter is the serialization-pressure measurement (our 1959 §9 / gpt #10). Convergence on opportunity-engine scope is modal (shared user prompt)."
+    },
+    {
+      "date": "2026-07-20",
+      "partner": "gpt",
+      "their_head": "cbdce43",
+      "their_head_msg": "Add self-evolving harness brainstorm (after 5 execution-proposal amendments)",
+      "pin_from": "0b5534c9869143a424f70ce7c18736e38d154dd4",
+      "reviewed": [
+        ".plan/260719-0426-proposal-smart-library-execution.md [T1, amended 5x through cbdce43: experiment-selection, moat-feedback, gray-literature, semantic-storage; propagated our work — parent_artifacts now cites our 260720-1000; dispositioned in our 260719-1336 Rev 2 §13]",
+        ".plan/260720-1433-brainstorm-self-evolving-smart-library-harness.md [T3 context; convergence modal (shared prompt); reacted in our 260719-1336 Rev 2 §14; six deltas absorbed]"
+      ],
+      "responses": [
+        ".plan/260719-1336-reaction-gpt-execution-proposal-moat.md (Rev 2; the one reaction this cycle — closes 0b5534c->cbdce43)",
+        ".plan/260720-1000-study-gray-literature-conflicting-claims-verification-s0.md (gray-lit S0; gpt propagated into their §G and D11)",
+        ".plan/260720-0024-brainstorm-rl-harness-graph-reward-functions.md (RL-harness reward-function brainstorm)",
+        ".plan/260720-1614-brainstorm-self-evolving-library-northstar.md (self-evolving brainstorm + research-utility dig / north star)",
+        ".plan/260720-1615-schema-plan-meta-graph-self-evolution.md (meta-graph schema: nodes/edges/invariants/diagram)"
+      ],
+      "obligations": [
+        "corrected evidence-to-opportunity spike (carryover, unchanged; the pending measurement artifact)",
+        "candidate spike-findings report IF the D0 'unify' branch is chosen (schemas/commands/fixtures/outputs/negative-tests to unblock gpt Phase 0->1)"
+      ],
+      "obligations_done": [
+        "reacted to gpt's execution-proposal amendments: every Rev-1 counter resolved/converged (D7 closed via Addendum A, dual retrieval restored, EIG-proxy adopted, D0 one-build-or-two formalized, gray-lit representation propagated in full)",
+        "storage counter retired at prose level — both sides hold logical-canonical / physical-open with the D1 bake-off as arbiter (no third prose round without measurement)"
+      ],
+      "notes": "High-yield cycle: gpt propagated nearly all of our contributions with attribution. Self-evolution convergence is modal (shared prompt); deltas complementary. Carried to gpt: reflexivity economy, fixed-point/anchor argument, I3, utility-hierarchy (utility is the delayed anchor, not a co-equal metric). Recommendation open (not a dispute): start disposition capture in Phase 1, not Phase 4/5."
     }
   ]
 }
