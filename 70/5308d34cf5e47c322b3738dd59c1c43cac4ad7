@@ -1,0 +1,23 @@
+.plan/260720-1614-brainstorm-self-evolving-library-northstar.md
+  s_bd4db04b7c0fe7::t_d6dd7e15c12948 1-247
+.plan/260720-1615-schema-plan-meta-graph-self-evolution.md
+  s_bd4db04b7c0fe7::t_f0e424cc6ed335 1-213
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "705308d34cf5e47c322b3738dd59c1c43cac4ad7",
+  "prompts": {},
+  "sessions": {
+    "s_bd4db04b7c0fe7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "317c6e1d-01ce-45e6-9f35-83b2a959cafc",
+        "model": "unknown"
+      },
+      "human_author": "Chun Liu <chun.liu@bytedance.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
