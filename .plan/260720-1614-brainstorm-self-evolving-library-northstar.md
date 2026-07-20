@@ -32,11 +32,12 @@ in any competent lane** — it earns ~zero credit as agreement. What earns weigh
 non-overlapping content: the reflexivity economy, the fixed-point/anchor argument, and the
 utility-as-anchor correction.*
 
-**Study-gate flag (load-bearing):** a proper treatment trips the gate. The matched bodies — named
-in §7, **not web-verified this session** — are Constitutional AI/RLAIF, open-ended/curriculum
-learning (POET/PAIRED/minimax-regret), self-referential self-improvement (Gödel machine/STOP/
-Promptbreeder), metamorphic & mutation testing, and the AI-Scientist safety incident. If we go past
-brainstorm, that list is the S0.
+**Study-gate flag — CLEARED (Rev 2):** the S0 exists:
+`260720-1632-study-self-evolution-harness-existing-art-s0.md`, six bodies web-verified. Verdict:
+all five memory-claims confirmed; five schema amendments returned (causal-Goodhart residual +
+tampering dichotomy, decorrelation x-axis, fixture admission mechanics, MRs + mutation score,
+I8 neighborhood evals / I9 eval-provenance independence). §7's body list is superseded by the
+study's verified record.
 
 ---
 
@@ -245,3 +246,4 @@ as the D0 two-consumer exercise, or unify — the user's call.
 | Rev | Date | Change | Driver |
 |---|---|---|---|
 | 1 | 2026-07-20 16:14 PDT | Initial brainstorm persisting the self-evolving-library discussion: reflexivity thesis (the library reading itself), the fixed-point/anchor argument, the three loci (organization/schema/harness/fixtures), the constitution (what must not evolve), the corrected objective (research-utility dig → utility-as-second-anchor, two-clock system), the absorb pass over gpt `260720-1433` (six deltas), prior-art hooks + study-gate flag, bounded first step. Companion to the meta-graph schema `260720-1615`. | user request: persist the whole self-evolving cycle incl. brainstorms, diagrams, absorbs, utility dig, north stars |
+| 2 | 2026-07-20 16:32 PDT | Study-gate cleared: the S0 (`260720-1632`) verified all six prior-art bodies; header flag updated from pending to cleared, pointing at the study's verdict and its five schema amendments. No design content changed here — the amendments land in `260720-1615` at its next revision, with the study as provenance. | S0 delivered |
