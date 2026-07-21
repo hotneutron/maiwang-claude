@@ -1,0 +1,47 @@
+.plan/260720-0024-brainstorm-rl-harness-graph-reward-functions.md
+  s_bd4db04b7c0fe7::t_db35df51e6ee8c 216-222,238
+.plan/260720-1615-schema-plan-meta-graph-self-evolution.md
+  s_bd4db04b7c0fe7::t_86ffe7524929ac 78-79,156-175,191-210,254
+AGENTS.md
+  s_bd4db04b7c0fe7::t_a3dcec96300bc5 26-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "1d1fbbcc25fefacdeae856612d20c43ce949969c",
+  "prompts": {},
+  "sessions": {
+    "s_bd4db04b7c0fe7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "317c6e1d-01ce-45e6-9f35-83b2a959cafc",
+        "model": "unknown"
+      },
+      "human_author": "Chun Liu <chun.liu@bytedance.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {
+    "s_099edcd4095c15": {
+      "tool": "trae",
+      "conversation_id": "6a585d6c367daf141dc7cd61",
+      "session_id": "6a585d6c367daf141dc7cd61",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_099edcd4095c15::t_2f6f37bc1c8b00": {
+      "tool": "trae",
+      "conversation_id": "6a585d6c367daf141dc7cd61",
+      "session_id": "6a585d6c367daf141dc7cd61",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_099edcd4095c15::t_fb81221df4f2e0": {
+      "tool": "trae",
+      "conversation_id": "6a585d6c367daf141dc7cd61",
+      "session_id": "6a585d6c367daf141dc7cd61",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    }
+  }
+}
