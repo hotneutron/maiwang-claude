@@ -213,6 +213,13 @@ scaling), and preference learning at low N. Expectation is that it **sharpens th
 rather than moving them** — but that is a prediction, not a result, and §0's confidence flag stands
 until it is run.
 
+*(Rev 2 update: **partially cleared.** The self-evolution S0 `260720-1632` web-verified the
+reward-model-overoptimization body — Gao/Schulman/Hilton arXiv:2210.10760 (proxy rises, gold peaks
+then degrades, lawful in KL distance) — plus reward tampering (Everitt) and specification gaming,
+so §2.1's "reward hacking by construction" caveat and the anti-Goodhart holdout are now cited, not
+memory. Still open before any actual RL training: RLVR/verifiable-reward training, RL for
+retrieval/search agents, process reward models, and preference learning at low N.)*
+
 ## 8. Cross-team disposition
 
 - **Local machinery (C8).** Nothing here amends shared schemas or Parallax.
@@ -228,3 +235,4 @@ until it is run.
 | Rev | Date | Change | Driver |
 |---|---|---|---|
 | 1 | 2026-07-20 00:24 PDT | Initial brainstorm persisting the RL-harness design discussion: the three-way split of "RL harness"; verify gate as programmatic reward and the read path as a genuine MDP; why disposition-based opportunity ranking is an inverted reward signal (study §7); the Axis-2 rule for trained policies; an 11-signal graph-intrinsic reward inventory with degenerate optima; the purity/coverage duality; RL-vs-metric triage and ranked spends (identity/dedup, ablation answerability, temporal-holdout link prediction); sequencing and the pending study-gate. | user request: "then keep it" |
+| 2 | 2026-07-20 16:45 PDT | §7 gate marked partially cleared: reward-model overoptimization (Gao 2210.10760), reward tampering (Everitt), and specification gaming were web-verified by the self-evolution S0 `260720-1632`; the §2.1 reward-hacking caveat is now cited. RLVR, retrieval-RL, PRMs, and low-N preference learning remain the open gate items before any training. | doc audit after S0 `260720-1632` |

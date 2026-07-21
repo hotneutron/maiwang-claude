@@ -75,8 +75,8 @@ time-clocks.
 | `change_proposal` | **opportunity + experiment** | `rationale`, `expected_effect`, `falsifier`, `rollback` | proposed → screened → measured → {ratified\|rejected\|deferred} → applied → superseded | lifecycle |
 | `disposition` | **decision** | `verdict`, `reason` | terminal | **human only** |
 | `schema_element` | **artifact** (under study) | `kind: node_type\|relation_member\|frame_slot`, `consumer_count` | shadow → candidate → promoted → deprecated → retired | code+human |
-| `check` | **artifact** (under study) | `kind: lint\|metric\|reward\|anchor`, `dual_of` | proposed → active → deprecated | code; **anchor: human only** |
-| `fixture` | **artifact** (under study) | `kind: gold\|silver`, `split: train\|eval\|holdout`, `family`, `mined_from`, `expected`, `expected_not` | silver → gold → stale → retired | code proposes; **gold: human ratifies** |
+| `check` | **artifact** (under study) | `kind: lint\|metric\|reward\|anchor`, `dual_of`, `mr` (declared metamorphic relation) | proposed → active → deprecated | code; **anchor: human only** |
+| `fixture` | **artifact** (under study) | `kind: gold\|silver`, `split: train\|eval\|holdout`, `family`, `mined_from`, `expected`, `expected_not`, `regret`, `witness`, `staleness` | silver →(band+regret+diversity)→ gold → stale → retired(mutation-score-guarded) | code proposes; **gold: human ratifies** |
 | `policy` | **artifact** (Axis-2 **cache**) | `cache: true`, `derived_from`, `allowed_mutations` | trained → active → superseded | code (freely — deletable) |
 | `prompt` | **artifact** (Axis-2 **cache**) *(absorb: gpt §5)* | `cache: true`, `version`, `derived_from` | drafted → active → superseded | code (freely — deletable) |
 | `organization_state` | **projection** (fast-clock) *(absorb: gpt §1)* | `views`, `workspaces`, `queues`, `aliases`, `indexes`, `uses_policy` | regenerated; never source-of-record | code (freely) |
@@ -153,6 +153,26 @@ invariant|anchor: constitutional (mutable:false, owner:human)
   by a human **or** auto-eligible = reversible ∧ non-anchor). A change lacking the chain is a lint.
 - **I7 · rate limit.** `schema_element: shadow → promoted` requires ≥N cycles of `consumer_count`
   evidence across distinct runs; schema/harness edits on the slow clock, parameters on the fast one.
+- **I8 · neighborhood evals** *(S0 `260720-1632` §7, CACE)*. A `change_proposal` is evaluated over
+  its meta-graph **neighborhood** (everything one `depends_on`/`uses_policy` hop away), never in
+  isolation — a unit-passing promote that breaks a dependent policy is the expected failure mode.
+- **I9 · eval-provenance independence** *(S0 §7, hidden feedback loops)*. Eval/holdout fixture data
+  must be provably uninfluenced by the loop under evaluation — extends I5 from train/test
+  contamination to *world-mediated* contamination (eval data shaped by previously promoted
+  policies makes evaluation self-confirming).
+
+**Tripwire note (S0 §6, Gao overoptimization):** the proxy-vs-anchor decorrelation detector (Trace
+B) gets an explicit x-axis — **edit-distance-from-baseline** (the KL analogue), with a budget per
+evolution cycle; degradation is lawful in that distance, so budget it. Anchor-eval capacity must
+scale with optimizer pressure or the overoptimization peak arrives earlier than expected.
+
+**Coverage note (S0 §6, Goodhart/tampering):** I3+decorrelation cover *regressional/extremal*
+Goodhart and the *RF-input-tampering* channel; I1/I2+sandbox cover *adversarial* Goodhart and the
+*reward-function-tampering* channel (Everitt's dichotomy — both layers required, the channels are
+formally distinct; STOP's 0.46%-unsandboxing-with-warning is why prompt-level admonitions don't
+count as a layer). **Causal Goodhart is the named uncovered variant**: interventions on the
+library's own corpus can break proxy→goal paths invisibly to all metric-side defenses — monitored,
+not defended. Also uncovered: incentive-side defenses (ours is capability-removal only).
 
 ## 6. Fixture families *(absorbed wholesale from gpt `260720-1433` §6)*
 
@@ -167,6 +187,26 @@ a regression command, protected invariants, and its originating failure/design-q
 
 The `expected_not` field is load-bearing: the lexical-decoy fixture guards a *rejection*, not an
 output — a fixture protects a behavior and its complement.
+
+**Admission mechanics** *(S0 `260720-1632` §4 — POET/PAIRED/PLR/ACCEL)*: a candidate (`silver`)
+fixture carries `regret = witness_score − system_score` with a named **`witness`** (reference
+solver, ensemble, or human — gold ratification formally *is* the witness role) and is admitted only
+under a **two-sided band** (current system fails it; the witness solves it — zero-regret candidates
+auto-reject as unsolvable-or-trivial) plus a **diversity gate** (admit only if it re-orders solver
+variants differently than existing fixtures, PATA-EC-style). The library runs as a **curation
+buffer**: score by regret + staleness, replay the informative, **mutate the frontier** to breed
+harder-but-solvable variants, archive everything (never evict old gold — the league/recurring-drift
+defense). Health metric: **ANNECS** — count of fixtures both admitted-in-band and later
+ratified/solved; a plateau means the generator has stopped producing genuinely-new-yet-solvable
+cases. A generator whose fitness is merely "the system fails this" is the naive
+difficulty-maximizing adversary PAIRED was built to fix.
+
+**Testing the tests** *(S0 §5 — metamorphic + mutation)*: every proposed `check{kind:metric|lint}`
+declares its **metamorphic relation** (what invariant, over what perturbation — claim-only ablation
+and polarity-flip are MRs); fixture retirement additionally requires a **mutation-score no-loss
+check** against the named graph-corruption operator set (`drop_edge`, `flip_polarity`,
+`stale_citation`, `break_provenance`, …) — a corruption the suite fails to flag is a surviving
+mutant naming a blind spot.
 
 ## 7. Two worked traces
 
@@ -211,3 +251,4 @@ migration) with actions {approve · reject-with-reason · request-smaller-fixtur
 | Rev | Date | Change | Driver |
 |---|---|---|---|
 | 1 | 2026-07-20 16:15 PDT | Initial meta-graph schema: at-a-glance diagram (three anchors: human/frozen-past/realized-outcome), 12 node types each mapped to an object-graph role (reflexivity proof), relation catalog (six reused families + three new members dual_of/gates/protects + two absorbed guards_against/uses_policy), per-node lifecycles, invariants I1–I7 as graph constraints, the 13 fixture families absorbed from gpt `260720-1433`, two worked traces (schema promotion; reward-hack catch), and the System-Health/Harness-Queue surface. Companion to brainstorm `260720-1614`. | user request: persist the whole self-evolving cycle incl. diagrams |
+| 2 | 2026-07-20 16:45 PDT | Absorbed the five S0 amendments (`260720-1632` §9): I8 neighborhood evals (CACE) + I9 eval-provenance independence (hidden feedback loops) added to the invariants; decorrelation tripwire x-axis (edit-distance budget; anchor capacity scales with pressure); Goodhart/tampering coverage note incl. causal-Goodhart as the named uncovered variant and the missing incentive-side layer; fixture admission mechanics (two-sided band, regret+witness with gold-ratification-as-witness, diversity gate, curation buffer, ANNECS) with new fixture fields `regret`/`witness`/`staleness` and mutation-score-guarded retirement; checks gain a declared `mr` field and the graph-corruption operator set. | S0 `260720-1632` cleared the gate and returned amendments |

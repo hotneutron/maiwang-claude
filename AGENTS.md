@@ -23,7 +23,8 @@ or records its blocker.
 
 - Keep root docs focused on this repo.
 - Name docs `{YYMMDD}-{HHMM}-{type}-{topics}.md`; get timestamp from `date`.
-- Doc types: `findings`, `reaction`, `reflection`, `cross-check`, `brainstorm`.
+- Doc types: `findings`, `reaction`, `reflection`, `cross-check`, `brainstorm`,
+  `study`, `proposal`, `plan`, `schema_plan` (authority map: `cross-team.json` warrant).
 - Any amendment to an existing artifact must add/update timestamped `## Revision History`.
 - Prefer local adoption notes over copied partner history.
 - No `Co-Authored-By` trailer.
